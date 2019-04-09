@@ -2,3 +2,4 @@
 aws:
   cluster_name: 'pbalogh-ocs4-test-cluster'
   pull_secret: '{"auths":{"your.registry1.io":{"auth":"SecretAuth","email":"pbalogh@redhat.com"},"your.registry2.io":{"auth": "SecretAuth,"email":"pbalogh@redhat.com"},"your.registry3.io":{"auth":"SecretAuth","email":"pbalogh@redhat.com"}}}'
+pub_ssh_key: 'here is my pub ssh key'

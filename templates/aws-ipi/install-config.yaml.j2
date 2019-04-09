@@ -2,12 +2,16 @@ apiVersion: {{ aws.api_version | default('v1beta4') }}
 baseDomain: {{ aws.base_domain | default('devcluster.openshift.com') }}
 compute:
 - name: worker
-  platform: {}
   replicas: {{ worker_replicas | default(3) }}
+  platform:
+    aws:
+      type: {{ worker_instance_type | default('m4.large') }}
 controlPlane:
   name: master
-  platform: {}
   replicas: {{ master_replicas | default(3) }}
+  platform:
+    aws:
+      type: {{ master_instance_type | default('m4.xlarge') }}
 metadata:
   creationTimestamp: null
   name: '{{ aws.cluster_name }}'
@@ -23,3 +27,4 @@ platform:
   aws:
     region: {{ aws.region | default('us-west-1') }}
 pullSecret: '{{ aws.pull_secret }}'  # Use double quotes inside pullSecret data!
+sshKey: '{{ pub_ssh_key | default("") }}'
